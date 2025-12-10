@@ -1,0 +1,32 @@
+<section class="rating">
+  <h1>Avalie</h1>
+
+  <div class="box">
+    <h3>Qual sua experiência hoje?</h3>
+
+    <div class="moods">
+      <button (click)="humor.set('PESSIMA')" [class.active]="humor() === 'PESSIMA'">Péssima</button>
+      <button (click)="humor.set('RUIM')" [class.active]="humor() === 'RUIM'">Ruim</button>
+      <button (click)="humor.set('NORMAL')" [class.active]="humor() === 'NORMAL'">Normal</button>
+      <button (click)="humor.set('BOA')" [class.active]="humor() === 'BOA'">Boa</button>
+      <button (click)="humor.set('EXCELENTE')" [class.active]="humor() === 'EXCELENTE'">
+        Excelente
+      </button>
+    </div>
+
+    <label>Comentários adicionais (opcional)</label>
+    <input [(ngModel)]="comentario" />
+
+    <div class="sliders">
+      <label>Eficiência: {{ eficiencia }}</label>
+      <input type="range" min="1" max="5" [(ngModel)]="eficiencia" />
+
+      <label>Solução: {{ solucao }}</label>
+      <input type="range" min="1" max="5" [(ngModel)]="solucao" />
+    </div>
+
+    <div class="ok" *ngIf="enviado">Avaliação enviada. Obrigado!</div>
+
+    <button (click)="enviar()">Enviar Avaliação</button>
+  </div>
+</section>

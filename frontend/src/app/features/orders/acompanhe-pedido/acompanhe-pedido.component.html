@@ -1,0 +1,14 @@
+<section class="track">
+  <h1>Acompanhe seu pedido</h1>
+
+  <div class="box">
+    <p *ngIf="!order">Selecione um pedido em "Pedidos Anteriores".</p>
+
+    <div class="timeline" *ngIf="order">
+      <div class="step" *ngFor="let s of steps" [class.active]="isActive(s.key)">
+        <div class="dot"></div>
+        <span>{{ s.label }}</span>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,47 @@
+<section class="cart">
+  <h1>Carrinho</h1>
+
+  <div class="box" *ngIf="items$ | async as items">
+    <div class="empty" *ngIf="items.length === 0">
+      Seu carrinho está vazio.
+      <a routerLink="/cardapio">Voltar ao cardápio</a>
+    </div>
+
+    <div class="item" *ngFor="let i of items">
+      <div class="title">
+        <strong *ngIf="i.tipo === 'PIZZA'">{{ i.pizza.nome }} ({{ i.tamanho }})</strong>
+        <strong *ngIf="i.tipo === 'BEBIDA'">{{ i.bebida.nome }} ({{ i.tamanho }})</strong>
+        <span>R$ {{ i.precoUnitario | number : '1.2-2' }}</span>
+      </div>
+
+      <div class="qty">
+        <button (click)="dec(i.id, i.quantidade)">-</button>
+        <span>{{ i.quantidade }}</span>
+        <button (click)="inc(i.id, i.quantidade)">+</button>
+      </div>
+    </div>
+
+    <div class="suggest">
+      <p>Deseja incluir um refrigerante 2L?</p>
+      <button (click)="incluirCoca2L()">Incluir Coca-Cola 2L</button>
+    </div>
+
+    <div class="totals">
+      <div>
+        Subtotal: <strong>R$ {{ subtotal() | number : '1.2-2' }}</strong>
+      </div>
+      <div>
+        Frete: <strong>R$ {{ frete | number : '1.2-2' }}</strong>
+      </div>
+      <div class="grand">
+        Total estimado:
+        <strong>R$ {{ subtotal() + frete | number : '1.2-2' }}</strong>
+      </div>
+    </div>
+
+    <div class="actions">
+      <a routerLink="/cardapio">Continuar pedindo</a>
+      <button (click)="irPagamento()">Continuar</button>
+    </div>
+  </div>
+</section>

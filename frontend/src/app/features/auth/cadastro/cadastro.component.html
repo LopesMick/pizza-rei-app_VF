@@ -1,0 +1,36 @@
+<section class="panel">
+  <h1>Cadastro</h1>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Nome</label>
+    <input formControlName="nome" />
+
+    <label>Endereço</label>
+    <input formControlName="endereco" />
+
+    <div class="row">
+      <div>
+        <label>Telefone</label>
+        <input formControlName="telefone" />
+      </div>
+      <div>
+        <label>E-mail</label>
+        <input formControlName="email" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div>
+        <label>Senha</label>
+        <input type="password" formControlName="senha" />
+      </div>
+      <div>
+        <label>Repita a Senha</label>
+        <input type="password" formControlName="senha2" />
+        <small *ngIf="form.get('senha2')?.hasError('mismatch')"> As senhas não conferem. </small>
+      </div>
+    </div>
+
+    <button type="submit">Cadastrar</button>
+  </form>
+</section>

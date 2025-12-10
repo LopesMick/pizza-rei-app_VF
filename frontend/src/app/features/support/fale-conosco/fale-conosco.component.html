@@ -1,0 +1,12 @@
+<section class="support">
+  <h1>Fale Conosco</h1>
+
+  <div class="box">
+    <label>Chat</label>
+    <textarea [(ngModel)]="mensagem" rows="4" placeholder="Escreva sua mensagem"></textarea>
+
+    <div class="ok" *ngIf="enviado">Mensagem enviada!</div>
+
+    <button (click)="enviar()">Enviar</button>
+  </div>
+</section>

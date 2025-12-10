@@ -1,0 +1,36 @@
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <img src="assets/images/logo-pizzaria-do-rei.png" alt="Pizzaria do Rei" />
+    </div>
+
+    <nav class="menu">
+      <a routerLink="/cadastro" routerLinkActive="active">Cadastro</a>
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/carrinho" routerLinkActive="active">Carrinho</a>
+      <a routerLink="/pedidos-anteriores" routerLinkActive="active">Pedidos Anteriores</a>
+      <a routerLink="/acompanhe-pedido" routerLinkActive="active">Acompanhe seu Pedido</a>
+      <a routerLink="/fale-conosco" routerLinkActive="active">Fale Conosco</a>
+      <a routerLink="/avalie" routerLinkActive="active">Avalie</a>
+      <a routerLink="/cancelar-pedido" routerLinkActive="active">Cancele seu Pedido</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+
+  <footer class="footer">
+    <div class="links">
+      <a routerLink="/sobre">Sobre</a>
+      <a routerLink="/termos">Termos</a>
+      <a routerLink="/privacidade">Política de Privacidade</a>
+    </div>
+
+    <div class="info">
+      <span>Seg - Dom 19:00 - 23:00</span>
+      <span>98888-8889</span>
+      <span>Rua do Pizzaiolo 1000</span>
+    </div>
+  </footer>
+</div>

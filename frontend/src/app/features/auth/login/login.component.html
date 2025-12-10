@@ -1,0 +1,17 @@
+<section class="panel">
+  <h1>Login</h1>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Usuário (e-mail)</label>
+    <input formControlName="usuario" />
+
+    <label>Senha</label>
+    <input type="password" formControlName="senha" />
+
+    <a class="link" routerLink="/recuperar-senha">Esqueci a minha senha</a>
+
+    <div class="error" *ngIf="erro">{{ erro }}</div>
+
+    <button type="submit">Entrar</button>
+  </form>
+</section>

@@ -1,0 +1,19 @@
+<section class="panel">
+  <h1>Recuperar Senha</h1>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>Usuário</label>
+    <input formControlName="usuario" />
+
+    <label>Nova Senha</label>
+    <input type="password" formControlName="novaSenha" />
+
+    <label>Repita a Senha</label>
+    <input type="password" formControlName="repita" />
+    <small *ngIf="form.get('repita')?.hasError('mismatch')"> As senhas não conferem. </small>
+
+    <div class="ok" *ngIf="msg">{{ msg }}</div>
+
+    <button type="submit">Enviar</button>
+  </form>
+</section>

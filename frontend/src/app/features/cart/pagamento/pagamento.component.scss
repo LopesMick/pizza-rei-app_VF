@@ -1,0 +1,70 @@
+.pay {
+  max-width: 860px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .box {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 18px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 14px;
+
+    li {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  .totals {
+    margin: 10px 0 18px;
+    display: grid;
+    gap: 6px;
+
+    .grand {
+      font-size: 18px;
+    }
+  }
+
+  .methods {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 14px;
+
+    button {
+      border-radius: 10px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+
+      &.active {
+        background: #fff;
+        color: #000;
+      }
+    }
+  }
+
+  .finish {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: #111;
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,68 @@
+<section class="menu-page">
+  <h1>Cardápio</h1>
+
+  <div class="size-bar">
+    <span>Tamanho da pizza:</span>
+    <button (click)="selectedPizzaSize.set('P')" [class.active]="selectedPizzaSize() === 'P'">
+      P
+    </button>
+    <button (click)="selectedPizzaSize.set('M')" [class.active]="selectedPizzaSize() === 'M'">
+      M
+    </button>
+    <button (click)="selectedPizzaSize.set('G')" [class.active]="selectedPizzaSize() === 'G'">
+      G
+    </button>
+  </div>
+
+  <div class="grid">
+    <div class="card" *ngFor="let p of pizzas()">
+      <h3>{{ p.nome }}</h3>
+      <div class="prices">
+        <span>P: R$ {{ p.preco.P | number : '1.2-2' }}</span>
+        <span>M: R$ {{ p.preco.M | number : '1.2-2' }}</span>
+        <span>G: R$ {{ p.preco.G | number : '1.2-2' }}</span>
+      </div>
+      <button (click)="addPizza(p)">Adicionar</button>
+    </div>
+  </div>
+
+  <h2>Bebidas</h2>
+
+  <div class="size-bar">
+    <span>Tamanho da bebida:</span>
+    <button
+      (click)="selectedBeverageSize.set('LATA')"
+      [class.active]="selectedBeverageSize() === 'LATA'"
+    >
+      Lata
+    </button>
+    <button
+      (click)="selectedBeverageSize.set('600ML')"
+      [class.active]="selectedBeverageSize() === '600ML'"
+    >
+      600ml
+    </button>
+    <button
+      (click)="selectedBeverageSize.set('2L')"
+      [class.active]="selectedBeverageSize() === '2L'"
+    >
+      2L
+    </button>
+  </div>
+
+  <div class="grid">
+    <div class="card" *ngFor="let b of bebidas()">
+      <h3>{{ b.nome }}</h3>
+      <div class="prices">
+        <span>Lata: R$ {{ b.preco.LATA | number : '1.2-2' }}</span>
+        <span>600ml: R$ {{ b.preco['600ML'] | number : '1.2-2' }}</span>
+        <span>2L: R$ {{ b.preco['2L'] | number : '1.2-2' }}</span>
+      </div>
+      <button (click)="addBebida(b)">Adicionar</button>
+    </div>
+  </div>
+
+  <p class="note">
+    As imagens são meramente ilustrativas e podem não corresponder exatamente aos produtos.
+  </p>
+</section>

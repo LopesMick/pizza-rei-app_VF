@@ -1,0 +1,29 @@
+.cancel {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+
+  .box {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 22px;
+  }
+
+  .ok {
+    margin: 10px 0;
+    font-size: 12px;
+    opacity: 0.9;
+  }
+
+  button {
+    margin-top: 10px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: none;
+    background: #b61f1f;
+    color: #fff;
+    font-weight: 800;
+    cursor: pointer;
+  }
+}

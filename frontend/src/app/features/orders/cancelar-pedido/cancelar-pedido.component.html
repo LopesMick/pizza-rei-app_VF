@@ -1,0 +1,12 @@
+<section class="cancel">
+  <h1>Cancelamento de Pedido</h1>
+
+  <div class="box">
+    <p>Pedidos já enviados não poderão ser cancelados.</p>
+    <p>Tem certeza que deseja cancelar?</p>
+
+    <div class="ok" *ngIf="confirmado()">Solicitação registrada.</div>
+
+    <button (click)="cancelar()">Cancelar</button>
+  </div>
+</section>

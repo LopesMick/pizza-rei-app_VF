@@ -1,0 +1,36 @@
+.orders {
+  max-width: 860px;
+  margin: 0 auto;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .box {
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 14px;
+    padding: 18px;
+  }
+
+  .order {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+    .sub {
+      font-size: 11px;
+      opacity: 0.8;
+    }
+    .price {
+      font-weight: 800;
+    }
+  }
+
+  .empty {
+    text-align: center;
+    opacity: 0.8;
+  }
+}

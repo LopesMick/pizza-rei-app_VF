@@ -1,0 +1,17 @@
+<section class="orders">
+  <h1>Pedidos Anteriores</h1>
+
+  <div class="box" *ngIf="orders.length; else empty">
+    <div class="order" *ngFor="let o of orders">
+      <div>
+        <strong>Pedido #{{ o.id.slice(0, 8) }}</strong>
+        <div class="sub">{{ o.criadoEm | date : 'dd/MM/yyyy HH:mm' }} • Status: {{ o.status }}</div>
+      </div>
+      <div class="price">R$ {{ o.total | number : '1.2-2' }}</div>
+    </div>
+  </div>
+
+  <ng-template #empty>
+    <p class="empty">Você ainda não tem pedidos.</p>
+  </ng-template>
+</section>
