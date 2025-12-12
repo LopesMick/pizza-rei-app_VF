@@ -11,8 +11,6 @@ import jakarta.ws.rs.ext.Provider;
 import java.io.IOException;
 
 /**
- * 
- * @author reinaldo.jose
  * Mecanismo que protege as rotas (endpoints) da sua API,
  * garantindo que apenas requisições com um JWT válido possam acessar os recursos.
  */
@@ -25,31 +23,39 @@ public class AuthFilter implements ContainerRequestFilter {
     @Override
     public void filter(ContainerRequestContext requestContext) throws IOException {
         String path = requestContext.getUriInfo().getPath();
+        String method = requestContext.getMethod();
 
-        // ✅ Rotas públicas
-        if (path.equals("health")
-                || path.equals("usuario/login")
-                || path.equals("usuario/salvar")) {
+        // 1) Libera preflight de CORS (OPTIONS) para o Angular
+        if ("OPTIONS".equalsIgnoreCase(method)) {
             return;
         }
 
-        // 🔍 Pega o header Authorization
+        // 2) Rotas públicas (sem token)
+        if (path.equals("health")
+                || path.equals("usuario/login")
+                || path.equals("usuario/salvar")
+                // Fale Conosco (contato) público
+                || path.equals("contato/salvar")) {
+            return;
+        }
+
+        // 3) Pega o header Authorization
         String authHeader = requestContext.getHeaderString("Authorization");
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             abort(requestContext, "Token ausente ou formato inválido.");
             return;
         }
 
-        // ✅ Extrai token corretamente
+        // Extrai o token corretamente
         String token = authHeader.substring("Bearer ".length()).trim();
 
-        // 🔐 Valida o token com AuthService
+        // 4) Valida o token com AuthService
         if (!authService.validarToken(token)) {
             abort(requestContext, "Token inválido ou expirado.");
             return;
         }
 
-        // Opcional: Recuperar o usuário do token
+        // Opcional: Recupera o e-mail do usuário do token
         String email = authService.getEmailDoToken(token);
         requestContext.setProperty("usuarioEmail", email);
     }
