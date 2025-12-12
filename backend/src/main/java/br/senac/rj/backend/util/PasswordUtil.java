@@ -5,11 +5,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * 
- * @author reinaldo.jose
- * Faz tratamento da senha.
+ * Faz tratamento da senha (hash + verificação).
  */
-public class PasswordUtil {
+public final class PasswordUtil {
+
+    private PasswordUtil() {
+        // evita instanciar
+    }
 
     // Gera hash da senha usando SHA-256
     public static String gerarHash(String senha) {

@@ -48,4 +48,3 @@ public class JaxRsApplication extends Application {
         return resources;
     }
 }
-

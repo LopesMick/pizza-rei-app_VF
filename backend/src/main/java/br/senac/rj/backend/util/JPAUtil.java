@@ -16,4 +16,3 @@ public class JPAUtil {
         return EMF.createEntityManager();
     }
 }
-

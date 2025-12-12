@@ -1,51 +1,44 @@
 package br.senac.rj.backend.entity;
 
-import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+import lombok.Data;
+
+/**
+ * Entidade para a tabela de Fale Conosco (contato).
+ */
 @Entity
 @Table(name = "contato")
+@Data
 public class Contato {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Pode ser nulo para permitir contato sem login
-    @ManyToOne
-    @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    // Opcional: se quiser vincular a um usuário, guarde o id ou email
+    // Neste primeiro momento vou deixar só como campo simples
+    @Column(name = "usuario_id")
+    private Long usuarioId;
 
-    @Column(nullable = false, length = 120)
+    @Column(length = 120, nullable = false)
     private String nome;
 
-    @Column(nullable = false, length = 160)
+    @Column(length = 160, nullable = false)
     private String email;
 
-    @Column(nullable = false, length = 120)
+    @Column(length = 120)
     private String assunto;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String mensagem;
 
-    @Column(nullable = false)
-    private LocalDateTime criadoEm = LocalDateTime.now();
-
-    public Contato() {}
-
-    public Long getId() { return id; }
-    public Usuario getUsuario() { return usuario; }
-    public String getNome() { return nome; }
-    public String getEmail() { return email; }
-    public String getAssunto() { return assunto; }
-    public String getMensagem() { return mensagem; }
-    public LocalDateTime getCriadoEm() { return criadoEm; }
-
-    public void setId(Long id) { this.id = id; }
-    public void setUsuario(Usuario usuario) { this.usuario = usuario; }
-    public void setNome(String nome) { this.nome = nome; }
-    public void setEmail(String email) { this.email = email; }
-    public void setAssunto(String assunto) { this.assunto = assunto; }
-    public void setMensagem(String mensagem) { this.mensagem = mensagem; }
-    public void setCriadoEm(LocalDateTime criadoEm) { this.criadoEm = criadoEm; }
+    @Column(name = "criado_em")
+    private LocalDateTime criadoEm;
 }
